@@ -13,7 +13,7 @@ class NotesViewBody extends StatelessWidget {
       child: Column(
         children: const [
           CustomAppBarItem(),
-         Expanded(child: NoteItemListView()),
+          Expanded(child: NoteItemListView()),
         ],
       ),
     );
@@ -22,11 +22,17 @@ class NotesViewBody extends StatelessWidget {
 
 class NoteItemListView extends StatelessWidget {
   const NoteItemListView({super.key});
-
+  final listColor = const [
+    Colors.red,
+    Colors.yellow,
+    Colors.green,
+    Colors.deepPurpleAccent
+  ];
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemBuilder: (context, index) => const NoteItem(),
+      itemCount: listColor.length,
+      itemBuilder: (context, index) =>  NoteItem(noteColor: listColor[index]),
     );
   }
 }
